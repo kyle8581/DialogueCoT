@@ -1,0 +1,109 @@
+Generate rationales for generating the target utterance("Target:"). The rational consists of 3-hop subquestion-subanswer pairs.
+Each question should contain commonsense relation in [oEffect, oReact, oWant, xAttr, xIntent, xNeed, xReact, xWant, isAfter, isBefore, Causes].
+These rationales should be the crucial cue for generating the target utterance but you should not include the target utterance and also pretend you don't know the target utterance.
+Subquestion 3 and Subanswer 3 should be about guessing the target utterance. So the Subanswer 3 should be closely related to the target utterance but don't mention it directly.
+If you think generating target utterance doesn't need commonsense, then just generate None for the rationale.
+
+[Example 1]
+A: The mosquitos are biting me !
+B: Me , too , I can ’ t stop scratching . They are everywhere ! Sneaky little jerks .
+A: Do you have any bug spray ?
+B: No , I forgot to buy some .
+A: Then we ’ ll have to put up with it .
+B: We can cover ourselves with beer ! That way if they bite us , they ’ ll get drunk and fall asleep .
+A: That ’ s without a doubt , the best idea you ’ Ve had ! Let ’ s do it !
+Target:
+B: Run! They are thirsty for more!
+
+Rationale:
+Subquestion 1: What is the intent of Person B when suggesting the use of beer to ward off mosquitos? (xIntent)
+Subanswer 1: Person B's intention is to make the mosquitos 'drunk' and cause them to fall asleep, reducing the amount of bites.
+Subquestion 2: What is Person A's reaction to Person B's unique idea to use beer? (xReact)
+Subanswer 2: Person A finds the idea amusing and agreeable, and shows enthusiasm in trying it out.
+Subquestion 3: What might be the effect on the mosquitos after Person A and B use beer to ward them off? (oEffect)
+Subanswer 3: Unexpectedly, the mosquitos might be attracted to the beer, causing them to swarm more intensively, creating the need for Person B to warn Person A about the increased mosquito activity.
+
+[Example 2]
+A: Did you put the blue bin out on the street ?
+B: Oh , no . I forgot .
+A: Well , you'd better take it out front .
+B: What time does the recycle truck come by ?
+A: It usually gets here at noon on Tuesday , which is tomorrow .
+B: I'll just take it out to the street tomorrow morning .
+A: Oh , no , you don't .
+B: What do you mean ?
+A: Every morning you get up late and rush off to work late .
+B: Do you think I'll forget to do it ?
+Target:
+A: You'll remember to do it , but you won't have time to do it .
+
+Rationale:
+Subquestion 1: What is Person B's regular morning routine according to Person A? (xAttr)
+Subanswer 1: According to Person A, Person B regularly wakes up late and is in a rush to go to work.
+Subquestion 2: What is the potential impact of Person B's morning routine on his ability to complete tasks like taking out the recycling bin? (oEffect)
+Subanswer 2: Due to his rushed morning routine, Person B might not have enough time to complete tasks such as taking out the recycling bin before leaving for work.
+Subquestion 3: Given Person B's regular morning routine, how might Person A predict Person B's ability to remember and accomplish the task of taking out the bin? (xIntent)
+Subanswer 3: Based on Person B's routine, Person A might predict that Person B will remember to take out the bin, but due to time constraints, won't actually be able to.
+
+[Example 3]
+A: Did you check the internet for next week's weather forecast ?
+B: I sure did . You're in luck ! It's supposed to snow all week in the mountains !
+A: Yes ! Somebody up there loves me ! I knew it wasn't too late for snow .
+B: It is kind of strange though , to have snow in April , and so much of it .
+A: There have been so many dry winters lately that it's about time , don't you think ?
+B: When you put it that way , I guess the skies can't hold out on us forever .
+A: This will be the best ski trip I've ever taken . I can't wait to use my new board.
+Target:
+B: It will be the best as long as the weatherman is right .
+
+Rationale:
+Subquestion 1: What is Person A's reaction to the snow forecast? (xReact)
+Subanswer 1: Person A is excited about the snow forecast because he plans to use his new board on a ski trip.
+Subquestion 2: What does Person B think about the reliability of weather forecasts? (xAttr)
+Subanswer 2: Person B might believe that weather forecasts are not always accurate, given the unpredictability of weather patterns.
+Subquestion 3: What might Person B want to communicate to Person A, given Person A's excitement and the uncertainty of weather forecasts? (oWant)
+Subanswer 3: Person B might want to remind Person A that his ski trip being the best is contingent on the accuracy of the weather forecast.
+
+[Example 4]
+A: Hey , Teresa , meet the new neighbors yet ?
+B: Actually , i popped in them last night .
+A: OK , let's cut to the chase . what are they like ?
+B: Well , they're really beautiful people .
+A: I'll say , she is really stacked , isn't she ?
+B: Yeah , she is a neck-off for sure .
+A: And he looks like a typical jog .
+B: He is a professional football player .
+A: Ah-ha , I thought so .
+Target:
+B: Anyway , that is not what I meant by beautiful . 
+
+Rationale:
+Subquestion 1: What is the attribute of the neighbors that Person B describes? (xAttr)
+Subanswer 1: Person B describes the neighbors as beautiful people.
+Subquestion 2: How does Person A interpret the attribute described by Person B? (oReact)
+Subanswer 2: Person A interprets the description as a comment on the neighbors' physical appearances.
+Subquestion 3: What might Person B want to clarify regarding the initial description, given Person A's interpretation? (xIntent)
+Subanswer 3: Given the misunderstanding, Person B may want to clarify what they meant by describing the neighbors as "beautiful."
+
+[Example 5]
+A: Excuse me. Uh, I want to get my girlfriend a sweater for her birthday, but I can't find the right one.
+B: Well, um, what about these over here?
+A: Uh, this one is okay. I like the style, but do you the same thing in a blue, a blue color?
+B: Um, well, Hmm. I don't ... I don't see a blue one, but about this green one?
+A: Uh, do you have the same thing in a dark green? And what size is this one anyway?
+B: It's a large.
+A: Oh, my girlfriend wears a small. That won't work.
+B: Well, what about this red one?
+A: Ummm, it's okay. How much is it? I don't see a price tag.
+Target:
+B: Well, let's see. It usually sells for $34, but it's on sale for $16.
+
+Rationale:
+Subquestion 1: What is the intent of Person A to ask the price of the red sweater? (xIntent)
+Subanswer 1: Person A wants to know the price of the red sweater but the price tag was not there.
+Subquestion 2: What would Person B wand to do if Person A asks the price? (oWant)
+Subanswer 2: Person B might want to check the price of the red sweater.
+Subquestion 3: What would Person B need to reply of the Person A's question after checking the price? (oNeed)
+Subanswer 3: Person B needs to let Person A know the price.
+
+[Example 6]

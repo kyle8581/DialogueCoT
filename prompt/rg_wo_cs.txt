@@ -1,0 +1,6 @@
+Generate the most plausible next response cosidering the dialogue history. You should follow the style of the history.
+[Example 1]
+History:
+{string_context}
+Next Response:
+{name_tag}

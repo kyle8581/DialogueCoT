@@ -1,0 +1,8 @@
+Generate the most plausible next response cosidering the dialogue history. You can refer to the rationale, but you should ignore the rationale if it mislead the next response. Do not try to put too much information on the next response. You should follow the style of the history.
+[Example 1]
+Rationale:
+{commonsense_knowledge}
+History:
+{string_context}
+Next Response:
+{name_tag}
